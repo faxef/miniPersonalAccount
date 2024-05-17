@@ -17,19 +17,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         const auth = request.headers.get('Authorization');
 
         // Список элементов
-        if (request.url.endsWith(`${environment.apiBaseUrl}/api/items`) && request.method === 'GET') {
+        if (request.url.endsWith(`${environment.apiBaseUrl}/api/tickets`) && request.method === 'GET') {
 
           console.log(`[intercepting] ${request.method} : ${request.url} ${auth}`);
 
           const body = {
             result: [
               {
-                title: 'Item 1',
+                title: 'Ticket 1',
                 description: 'Description 1',
                 id: 1
               },
               {
-                title: 'Item 2',
+                title: 'Ticket 2',
                 description: 'Description 2',
                 id: 2
               }
