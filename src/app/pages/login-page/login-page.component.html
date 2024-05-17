@@ -7,9 +7,9 @@
           <form [formGroup]="loginForm">
 
             <div class="form-group">
-              <label for="inputEmail">Email*</label>
-              <input type="email" id="inputEmail" aria-describedby="emailHelp"
-                     placeholder="Введите Email" formControlName="email" [autocomplete]="false">
+              <label for="inputUsername">Логин*</label>
+              <input type="text" id="inputUsername" aria-describedby="userNameHelp"
+                     placeholder="Введите логин" formControlName="username" [autocomplete]="false">
             </div>
 
             <div class="form-group">
@@ -22,7 +22,7 @@
               <strong>There was an error!</strong><br>Please check your username/password and try again.
             </p>
 
-            <button id="submitButton" class="btn btn-fill text-uppercase" type="button"
+            <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="button"
                     [disabled]="!loginForm.valid || processing"
                     (click)="onSubmit()">{{ processing ? 'Входим...' : 'Войти' }}
             </button>
