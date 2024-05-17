@@ -37,7 +37,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/styles/css/reset.min.css",
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+// ---------------------- Основные
+
+// Переменные
+@import 'scss/core/variables';
+
+// Общее
+@import 'scss/core/general';
+
+
+// ---------------------- Текст
+
+// Подключение шрифтов
+@import 'scss/text/fonts';
+
+// Стилизация текста
+@import 'scss/text/text-style';
+
+// ---------------------- UI части общие
+
+// Стилизация полей
+@import 'scss/ui/inputs';
+
+// Стилизация кнопок
+@import 'scss/ui/buttons';
+
+

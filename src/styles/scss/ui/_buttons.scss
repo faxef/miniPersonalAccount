@@ -1,0 +1,60 @@
+a, button {
+  &:focus, &:active {
+    outline: none !important;
+  }
+
+  &.btn {
+    border-radius: var(--borderRadiusInputs);
+    padding: 9px 1em;
+    cursor: pointer;
+    font-size: var(--baseFontSize);
+    opacity: 1;
+    transition: 0.4s ease;
+    border: 1px solid transparent;
+    font-weight: 600;
+
+    &.btn-empty {
+      background-color: var(--mainGrayBackgorundColor);
+      color: var(--mainTextColor);
+
+      &:hover {
+        background-color: var(--mainGrayBackgorundColorHover);
+      }
+    }
+
+    &.btn-outline {
+      color: var(--mainActiveColor);
+      border: 1px solid var(--mainActiveColor);
+      background-color: var(--white);
+
+      &:hover {
+        color: var(--white);
+        background-color: var(--mainActiveColor);
+      }
+    }
+
+    &.btn-withIcon {
+      align-items: center;
+
+      .icon {
+        font-size: 12px;
+        margin-right: 10px;
+      }
+    }
+
+    &.btn-fill {
+      background-color: var(--mainActiveColor);
+      color: var(--white);
+
+      &:hover {
+        color: var(--white);
+        background-color: var(--mainActiveColorHover);
+      }
+    }
+
+    &.btn-disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}

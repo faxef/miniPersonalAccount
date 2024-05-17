@@ -1,0 +1,139 @@
+// стандартные стили для input
+input, textarea, select, mat-select:not(.header-dropdown) {
+  background: var(--white);
+  width: 100%;
+  border: 1px solid var(--borderColor);
+  box-sizing: border-box;
+  border-radius: var(--borderRadiusInputs);
+  outline: none;
+  padding: 10px;
+  color: var(--mainTextColor);
+  font-size: var(--smallFontSize);
+
+  &:focus, &:active {
+    outline: none !important;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--placeholderColor);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--placeholderColor);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--placeholderColor);
+}
+
+// Стандартный вид чекбоксов\радио
+.checkbox, .radio {
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    input {
+      display: none;
+      visibility: hidden;
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+
+      &:checked {
+        & ~ .checkmark {
+          border: 1px solid var(--mainActiveColor);
+
+          &:after {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    .checkmark {
+      position: relative;
+      height: 16px;
+      width: 16px;
+      min-width: 16px;
+      border: 1px solid var(--placeholderColor);
+      border-radius: 50%;
+      background-color: var(--white);
+
+      &:after {
+        transition: 0.4s ease;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        content: '';
+        top: calc(50% - 5px);
+        left: calc(50% - 5px);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--mainActiveColor);
+      }
+    }
+  }
+}
+
+.checkbox {
+  input {
+    &:checked {
+      & ~ .checkmark {
+        background: var(--mainActiveColor);
+      }
+    }
+  }
+
+  label {
+    .checkmark {
+      border-radius: var(--borderRadiusInputs);
+
+      &:after {
+        top: calc(50% - 4px);
+        left: calc(50% - 5px);
+        width: 10px;
+        height: 6px;
+        border-radius: 1px;
+        border-left: 2px solid var(--white);
+        border-bottom: 2px solid var(--white);
+        background: transparent;
+        transform: translateY(0%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.select {
+  mat-select {
+    padding: 0;
+
+    .mat-select-trigger {
+      padding: 10px;
+    }
+
+    .mat-select-arrow {
+      color: var(--placeholderColor);
+    }
+  }
+}

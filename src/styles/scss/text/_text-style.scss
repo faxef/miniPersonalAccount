@@ -1,0 +1,35 @@
+h1 {
+  font-size: var(--largeFontSize);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--mediumFontSize);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: var(--regularFontSize);
+  font-weight: 400;
+}
+
+h4, label {
+  font-size: var(--baseFontSize);
+}
+
+h5 {
+  font-size: var(--smallFontSize);
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+p {
+  font-weight: 400;
+  color: var(--mainTextColor);
+  font-size: var(--baseFontSize);
+}

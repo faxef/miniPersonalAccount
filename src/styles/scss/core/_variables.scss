@@ -1,0 +1,27 @@
+:root {
+  // colors
+  --mainTextColor: #271414;
+  --mainActiveColor: #F39200;
+  --mainActiveColorHover: #875912;
+  --borderColor: #DAC4AC;
+  --scrollColor: rgba(96, 50, 50, 0.5);
+  --white: #FFFBF3;
+  --colorError: #E64646;
+
+
+  // font-size
+  --xlargeFontSize: 28px;
+  --largeFontSize: 24px;
+  --mediumFontSize: 20px;
+  --regularFontSize: 18px;
+  --baseFontSize: 16px;
+  --smallFontSize: 14px;
+  --xsmallFontSize: 12px;
+
+  // text variables
+  --default-line-height: 1.1;
+  --default-font-family: 'Segoe UI', sans-serif;
+
+  //radius
+  --borderRadiusInputs: 8px;
+}
