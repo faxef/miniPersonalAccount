@@ -6,17 +6,11 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FakeBackendInterceptor} from "./core/interceptors/server-fake.interceptor";
 import {TokenInterceptor} from "./core/interceptors/tokenFake.interceptor";
-import {APP_BASE_HREF} from "@angular/common";
-import { MainPageComponent } from './pages/main-page/main-page.component';
 
-function AuthGuard() {
-
-}
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
   ],
   imports: [
     BrowserModule,
