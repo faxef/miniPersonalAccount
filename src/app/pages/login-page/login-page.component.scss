@@ -1,0 +1,28 @@
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+
+  .login-form-body {
+    border: 0;
+    border-radius: var(--borderRadiusInputs);
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+
+    .login-form-title {
+      margin-bottom: 2rem;
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
+
+    form {
+      width: 100%;
+      .form-group {
+        gap: 5px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
