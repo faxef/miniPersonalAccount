@@ -39,14 +39,9 @@ export class TicketAddComponent {
     }
   }
 
-  getButtonText(): string {
-    return this.item ? 'Обновить' : 'Добавить';
-  }
-
   private doAddItem() {
-    console.log(this.ticketForm.value);
     this.ticketsService.add(this.ticketForm.value).subscribe(
-      (result) => {
+      () => {
         this.ticketForm.reset();
         this.formSubmitEvent.next('add');
         this.processing  = false;

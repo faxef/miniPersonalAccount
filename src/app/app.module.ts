@@ -7,6 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FakeBackendInterceptor} from "./core/interceptors/server-fake.interceptor";
 import {TokenInterceptor} from "./core/interceptors/tokenFake.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -20,6 +21,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppRoutingModule,
   ],
   providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        subscriptSizing: 'dynamic'
+      }
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

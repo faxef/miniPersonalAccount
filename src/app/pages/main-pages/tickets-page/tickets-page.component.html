@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-8 mr-auto ml-auto">
+    <div class="col-md-12">
+      <app-ticket-add></app-ticket-add>
+    </div>
+
+    <div class="col-md-12">
 
       <p *ngIf="!hasTickets(tickets$ | async); else hasData" class="alert alert-danger" role="alert">
         <Strong>У вас нет ни одного тикета</Strong><br>
@@ -12,9 +16,6 @@
       </ng-template>
     </div>
 
-    <div class="col-md-4">
-      <app-ticket-add></app-ticket-add>
-    </div>
 
   </div>
 
