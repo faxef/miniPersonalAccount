@@ -21,9 +21,11 @@ export class ProfileService {
           this.setDataUser(success)
         }
       }),
-      catchError((err) => of(false))
+      catchError(() => of(false))
     );
   }
+
+
   private setDataUser(data: User): void {
     // @ts-ignore
     const prevUserData = JSON.parse(localStorage.getItem('user-data'));

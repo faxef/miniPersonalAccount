@@ -1,5 +1,5 @@
 <div class="profile-container">
-  <h2>Профиль пользователя</h2>
+  <h2>Профиль пользователя - {{userData.firstName}} {{userData.lastName}}</h2>
   <form [formGroup]="profileForm">
     <mat-form-field>
       <mat-label>ID</mat-label>
@@ -37,7 +37,7 @@
       </mat-select>
     </mat-form-field>
 
-    <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="button"
+    <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="submit"
             [disabled]="!profileForm.valid || processing"
             (click)="onSubmit()">{{ processing ? 'Сохраняем...' : 'Сохранить' }}
     </button>

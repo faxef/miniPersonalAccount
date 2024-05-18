@@ -21,11 +21,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           console.log(`[intercepting] ${request.method} : ${request.url} ${auth}`);
 
           const bodyPosted = request.body;
-          const random = Math.floor(Math.random() * 1000) + 1;
-          const newResult = {...bodyPosted, id: random};
+          const newResult = {...bodyPosted, id: 0, createdAt: new Date().toISOString()};
 
           const body = {
-            success: bodyPosted ? true : false,
+            success: !!bodyPosted,
             result: newResult
           };
           return of(new HttpResponse({status: 200, body: body}));
@@ -34,14 +33,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // Обновить элемент
         if (request.url.startsWith(`${environment.apiBaseUrl}/api/ticket`) && request.method === 'PUT') {
 
-          console.log(`[intercepting] ${request.method} : ${request.url} ${auth}`);
-
           const bodyPosted = request.body;
 
           const body = {
-            success: bodyPosted ? true : false,
-            result: bodyPosted
-          };
+            title: bodyPosted['title'],
+            description: bodyPosted['description'],
+          }
           return of(new HttpResponse({status: 200, body: body}));
         }
 

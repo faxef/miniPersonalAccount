@@ -8,6 +8,7 @@ import {FooterComponent} from "../../components/footer/footer.component";
 import {TicketsPageModule} from "./tickets-page/tickets-page.module";
 import {HomePageModule} from "./home-page/home-page.module";
 import {ProfilePageModule} from "./profile-page/profile-page.module";
+import {BreadcrumbsComponent} from "../../components/breadcrumbs/breadcrumbs.component";
 
 
 
@@ -15,7 +16,8 @@ import {ProfilePageModule} from "./profile-page/profile-page.module";
   declarations: [
     MainPagesComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     CommonModule,

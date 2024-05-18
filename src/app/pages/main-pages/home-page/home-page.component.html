@@ -1,15 +1,8 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-8 mr-auto ml-auto">
-
-      <p *ngIf="!hasTickets(tickets$ | async); else hasData" class="alert alert-danger" role="alert">
-        <Strong>У вас нет ни одного тикета</Strong><br>
-        Добавьте один, перейдя на вкладку Тикеты
-      </p>
-      <ng-template #hasData>
+    <div class="col-md-12 mr-auto ml-auto">
         <app-tickets-list [data]="tickets$ | async"></app-tickets-list>
-      </ng-template>
     </div>
 
 

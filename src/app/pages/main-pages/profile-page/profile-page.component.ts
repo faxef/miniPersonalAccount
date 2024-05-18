@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/services/auth.service";
 import {catchError, tap} from "rxjs/operators";
 import {of} from "rxjs";
 import {ProfileService} from "../../../core/services/profile.service";
+import {User} from "../../../core/interfaces/user";
 
 @Component({
   selector: 'app-profile-page',
@@ -13,8 +13,10 @@ import {ProfileService} from "../../../core/services/profile.service";
 })
 export class ProfilePageComponent {
   processing = false;
+  userData!: User;
+
   profileForm = new FormGroup({
-    id: new FormControl({value: '', disabled: true}),
+    id: new FormControl({value: 0, disabled: true}),
     username: new FormControl('', [Validators.required]),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -29,6 +31,7 @@ export class ProfilePageComponent {
   }
 
   ngOnInit() {
+    this.userData = this.authService.getUserData()
     this.patchValues()
   }
 
@@ -40,20 +43,21 @@ export class ProfilePageComponent {
 
   private patchValues() {
     this.profileForm.patchValue({
-      id: this.authService.getUserData().id,
-      username: this.authService.getUserData().username,
-      firstName: this.authService.getUserData().firstName,
-      lastName: this.authService.getUserData().lastName,
-      birthDate: this.authService.getUserData().birthDate,
-      city: this.authService.getUserData().city,
+      id: this.userData.id,
+      username: this.userData.username,
+      firstName: this.userData.firstName,
+      lastName: this.userData.lastName,
+      birthDate: this.userData.birthDate,
+      city: this.userData.city,
     });
   }
 
   private profileUpdate() {
     this.processing = true;
     this.profileService.update(this.profileForm.value).pipe(
-      tap((data) => {
+      tap(() => {
         this.processing = false
+        this.userData = this.authService.getUserData()
       }),
       catchError((err) => {
         console.error('---- Ошибка ---- ', err);

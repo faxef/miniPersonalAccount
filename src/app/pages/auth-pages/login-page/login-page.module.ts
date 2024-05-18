@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
 
 
 const routes = [
@@ -12,14 +13,15 @@ const routes = [
 ]
 @NgModule({
   declarations: [LoginPageComponent],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule.forChild(routes),
-        MatFormField,
-        MatInput,
-        MatLabel
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatIcon
+  ]
 })
 export class LoginPageModule { }

@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
-import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../core/services/auth.service';
+import {catchError, tap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush //OnPush стратегия для улучшения производительности
 })
 export class LoginPageComponent implements OnInit {
 
@@ -18,14 +19,15 @@ export class LoginPageComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
+  hide = true;
   processing = false;
-  error = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar
+  ) {
+  }
 
   ngOnInit() {
     if (this.authService.hasToken()) {
@@ -34,7 +36,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.error = false;
     if (this.loginForm.valid) {
       this.login();
     }
@@ -44,12 +45,7 @@ export class LoginPageComponent implements OnInit {
     this.processing = true;
     this.authService.login(this.loginForm.value).pipe(
       tap((data) => {
-        console.log(data);
-        if (data) {
-          this.handleLoginSuccess();
-        } else {
-          this.handleLoginError();
-        }
+        data ? this.handleLoginSuccess() : this.handleLoginError();
       }),
       catchError((err) => {
         console.error('---- Ошибка ---- ', err);
@@ -61,12 +57,11 @@ export class LoginPageComponent implements OnInit {
 
   private handleLoginSuccess() {
     this.processing = false;
-    this.error = false;
-    this.router.navigate(['/']); // Редирект на главную страницу или другую защищенную страницу
+    void this.router.navigate(['/']); // Редирект на главную страницу или другую защищенную страницу
   }
 
   private handleLoginError() {
     this.processing = false;
-    this._snackBar.open('Проверьте логин или пароль', 'Ok').afterOpened();
+    this.snackBar.open('Проверьте логин или пароль', 'Ok');
   }
 }

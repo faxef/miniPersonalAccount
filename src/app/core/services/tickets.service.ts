@@ -38,18 +38,13 @@ export class TicketsService {
     localStorage.setItem(this.storageKey, JSON.stringify(items));
   }
 
-  clear(): void {
-    this.updateItems([]);
-    localStorage.removeItem(this.storageKey);
-  }
-
   getAll(): Observable<Ticket[]> {
     return this.tickets$.asObservable();
   }
 
   get(id: number): Observable<Ticket | undefined> {
     return this.getAll().pipe(
-      map(items => items.find(item => item.id === id))
+      map(items => items.find(item => item.id == id))
     );
   }
 
@@ -57,7 +52,7 @@ export class TicketsService {
     return this.http.delete<boolean>(`${environment.apiBaseUrl}/api/ticket/${id}`).pipe(
       tap(success => {
         if (success) {
-          const items = this.getItems().filter(item => item.id !== id);
+          const items = this.getItems().filter(item => item.id != id);
           this.updateItems(items);
         }
       }),
@@ -65,19 +60,11 @@ export class TicketsService {
     );
   }
 
-  fetchItem(id: number): Observable<Ticket | null> {
-    // @ts-ignore
-    return this.http.get<any>(`${environment.apiBaseUrl}/api/ticket/${id}`).pipe(
-      map(response => response['success'] ? response['result'] : null),
-      catchError(this.handleError)
-    );
-  }
-
-  update(id: number, payload: Ticket): Observable<boolean> {
-    return this.http.put<boolean>(`${environment.apiBaseUrl}/api/ticket/${id}`, payload).pipe(
+  update(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${environment.apiBaseUrl}/api/ticket/${id}`, data).pipe(
       tap(success => {
         if (success) {
-          const items = this.getItems().map(item => item.id === id ? payload : item);
+          const items = this.getItems().map(item => item.id == id ? {...item, ...success} : item);
           this.updateItems(items);
         }
       }),
@@ -90,18 +77,12 @@ export class TicketsService {
       map(res => res['result'] || null),
       tap(success => {
         if (success) {
+          const lastElem = this.getItems().at(-1)
+          success.id =  lastElem && lastElem.id + 1 || 0
           const items = [...this.getItems(), success];
           this.updateItems(items);
         }
       }),
-      catchError(this.handleError)
-    );
-  }
-
-  fetch(): Observable<boolean> {
-    return this.http.get<any>(`${environment.apiBaseUrl}/api/tickets`).pipe(
-      map(response => response['result'] || []),
-      tap(items => this.updateItems(items)),
       catchError(this.handleError)
     );
   }

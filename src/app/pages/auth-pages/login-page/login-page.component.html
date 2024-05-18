@@ -14,15 +14,12 @@
             <div class="form-group">
               <mat-form-field>
                 <mat-label>Введите пароль</mat-label>
-                <input matInput formControlName="password" type="password">
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
               </mat-form-field>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </div>
 
-            <p class="alert alert-danger" role="alert" *ngIf="error">
-              <strong>There was an error!</strong><br>Please check your username/password and try again.
-            </p>
-
-            <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="button"
+            <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="submit"
                     [disabled]="!loginForm.valid || processing"
                     (click)="onSubmit()">{{ processing ? 'Входим...' : 'Войти' }}
             </button>

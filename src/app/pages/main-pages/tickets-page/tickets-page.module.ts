@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { TicketsPageComponent } from './tickets-page.component';
 import {TicketsListComponent} from "./tickets-list/tickets-list.component";
 import {TicketAddModule} from "./tickets-list/ticket-add/ticket-add.module";
+import {
+  MatTableModule
+} from "@angular/material/table";
+import {TicketPageModule} from "./ticket-page/ticket-page.module";
 
 
 
@@ -16,7 +20,9 @@ import {TicketAddModule} from "./tickets-list/ticket-add/ticket-add.module";
   ],
   imports: [
     CommonModule,
-    TicketAddModule
+    TicketAddModule,
+    MatTableModule,
+    TicketPageModule
   ]
 })
 export class TicketsPageModule { }

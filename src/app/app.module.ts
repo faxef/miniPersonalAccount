@@ -1,14 +1,17 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FakeBackendInterceptor} from "./core/interceptors/server-fake.interceptor";
-import {TokenInterceptor} from "./core/interceptors/tokenFake.interceptor";
+import {TokenInterceptor} from "./core/interceptors/token-fake.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import localeRu from '@angular/common/locales/ru';
+import {registerLocaleData} from "@angular/common";
 
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
       useClass: FakeBackendInterceptor,
       multi: true
     },
+    { provide: LOCALE_ID, useValue: 'ru' }
   ],
   bootstrap: [AppComponent]
 })

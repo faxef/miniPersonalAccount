@@ -1,1 +1,35 @@
-<p>ticket-page works!</p>
+<div class="ticket-container">
+  <h2>Тикет - {{ ticketData.id }}</h2>
+  <form [formGroup]="ticketForm">
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Время создания</mat-label>
+      <input matInput formControlName="createdAt" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Заголовок</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Описание</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+
+    <div class="btns-containers">
+      <button id="saveButton" class="btn btn-fill btn-lg text-uppercase" type="submit"
+              [disabled]="!ticketForm.valid || processing"
+              (click)="ticketUpdate()">{{ processing ? 'Сохраняем...' : 'Изменить' }}
+      </button>
+      <button id="deleteButton" class="btn btn-outline btn-lg text-uppercase" type="button"
+              [disabled]="processing"
+              (click)="ticketDelete()">Удалить
+      </button>
+    </div>
+  </form>
+</div>

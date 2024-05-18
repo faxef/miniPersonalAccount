@@ -24,6 +24,7 @@ app-root {
 
 // Общий стиль ссылок при наведении
 a {
+  color: var(--mainTextColor);
   cursor: pointer;
   transition: 0.2s all ease;
 

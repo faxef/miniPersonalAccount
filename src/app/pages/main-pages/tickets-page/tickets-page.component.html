@@ -6,14 +6,7 @@
     </div>
 
     <div class="col-md-12">
-
-      <p *ngIf="!hasTickets(tickets$ | async); else hasData" class="alert alert-danger" role="alert">
-        <Strong>У вас нет ни одного тикета</Strong><br>
-        Добавьте один.
-      </p>
-      <ng-template #hasData>
-        <app-tickets-list [data]="tickets$ | async"></app-tickets-list>
-      </ng-template>
+      <app-tickets-list [data]="tickets$ | async"></app-tickets-list>
     </div>
 
 

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { User } from '../interfaces/user';
-import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +38,7 @@ export class AuthService {
         this.isLoggedIn.next(false);
       }),
       map(() => true),
-      catchError((err) => of(false))
+      catchError(() => of(false))
     );
   }
 
@@ -54,7 +53,7 @@ export class AuthService {
         }
       }),
       map((data) => (data.token && data.user ? data.user : false)),
-      catchError((err) => of(false))
+      catchError(() => of(false))
     );
   }
 

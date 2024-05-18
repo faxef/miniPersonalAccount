@@ -33,8 +33,6 @@ export class TicketAddComponent {
     if (this.ticketForm.valid) {
       if (!this.item) {
         this.doAddItem();
-      } else {
-        this.doUpdateItem();
       }
     }
   }
@@ -47,24 +45,6 @@ export class TicketAddComponent {
         this.processing  = false;
       }
     );
-  }
-
-  private doUpdateItem() {
-    this.ticketsService.update(this.ticketForm.value.id , this.ticketForm.value).subscribe(
-      (result) => {
-        if (result) {
-          this.formSubmitEvent.next('update');
-          this.reset();
-        }
-        this.processing  = false;
-      }
-    );
-  }
-
-  private reset() {
-    this.item  = null;
-    this.ticketForm.reset();
-    this.initForm();
   }
 
   private initForm() {
