@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Ticket} from "../../../../../core/interfaces/ticket";
-import {TicketsService} from "../../../../../core/services/tickets.service";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Ticket } from "../../../../../core/interfaces/ticket";
+import { TicketsService } from "../../../../../core/services/tickets.service";
 
 @Component({
   selector: 'app-ticket-add',
   templateUrl: './ticket-add.component.html',
-  styleUrl: './ticket-add.component.scss'
+  styleUrls: ['./ticket-add.component.scss']
 })
 export class TicketAddComponent {
 
@@ -15,20 +15,16 @@ export class TicketAddComponent {
 
   ticketForm: FormGroup = new FormGroup({});
 
-  processing: Boolean = false;
+  processing = false;
 
-  constructor(
-    private ticketsService: TicketsService
-  ) {
-  }
+  constructor(private ticketsService: TicketsService) {}
 
   ngOnInit() {
     this.initForm();
   }
 
   onSubmit() {
-
-    this.processing  = true;
+    this.processing = true;
 
     if (this.ticketForm.valid) {
       if (!this.item) {
@@ -42,7 +38,7 @@ export class TicketAddComponent {
       () => {
         this.ticketForm.reset();
         this.formSubmitEvent.next('add');
-        this.processing  = false;
+        this.processing = false;
       }
     );
   }

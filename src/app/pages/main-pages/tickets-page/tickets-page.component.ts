@@ -21,8 +21,4 @@ export class TicketsPageComponent {
     this.tickets$ = this.ticketsService.tickets$;
   }
 
-  hasTickets(tickets: Ticket[] | null): boolean | null {
-    return tickets && tickets.length > 0;
-  }
-
 }
