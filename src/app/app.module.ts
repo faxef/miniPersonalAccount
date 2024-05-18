@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FakeBackendInterceptor} from "./core/interceptors/server-fake.interceptor";
 import {TokenInterceptor} from "./core/interceptors/tokenFake.interceptor";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {TokenInterceptor} from "./core/interceptors/tokenFake.interceptor";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
   ],

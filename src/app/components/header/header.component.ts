@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
 
 
@@ -10,12 +10,15 @@ import {AuthService} from "../../core/services/auth.service";
 export class HeaderComponent implements OnInit {
 
   navToggle: Boolean = false;
+  userId: String = ''
 
   constructor(
     private authService: AuthService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
+    this.userId = this.authService.getUserData().id
   }
 
   logout() {
@@ -23,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleNav() {
-    this.navToggle  = !this.navToggle;
+    this.navToggle = !this.navToggle;
   }
 
 }

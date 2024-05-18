@@ -19,21 +19,6 @@ export class AuthService {
     this.resolveToken();
   }
 
-  validateTokenOnServer(): Observable<any> {
-    return this.http.get<{ user: User }>(`${environment.apiBaseUrl}/api/auth/validate-token`).pipe(
-      map((data) => data.user || false),
-      tap((status) => {
-        if (status) {
-          this.userData = status;
-          this.isLoggedIn.next(true);
-        } else {
-          this.isLoggedIn.next(false);
-        }
-      }),
-      catchError((err) => of(false))
-    );
-  }
-
   private resolveToken(): void {
     this.token = localStorage.getItem('token');
     this.isLoggedIn.next(!!this.token);
@@ -79,8 +64,9 @@ export class AuthService {
     localStorage.clear();
   }
 
-  getUserData(): User | null {
-    return this.userData;
+  getUserData(){
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem('user-data'));
   }
 
   private setDataAfterLogin(data: { token: string; user: User }): void {

@@ -5,6 +5,9 @@ import {RouterOutlet} from "@angular/router";
 import {MainPagesRoutingModule} from "./main-pages-routing.module";
 import {HeaderComponent} from "../../components/header/header.component";
 import {FooterComponent} from "../../components/footer/footer.component";
+import {TicketsPageModule} from "./tickets-page/tickets-page.module";
+import {HomePageModule} from "./home-page/home-page.module";
+import {ProfilePageModule} from "./profile-page/profile-page.module";
 
 
 
@@ -17,6 +20,13 @@ import {FooterComponent} from "../../components/footer/footer.component";
   imports: [
     CommonModule,
     RouterOutlet,
+    // Модуль Тикетов
+    TicketsPageModule,
+    // Главная страница
+    HomePageModule,
+    //Страница профиля
+    ProfilePageModule,
+    // Роутинг
     MainPagesRoutingModule,
   ],
 })

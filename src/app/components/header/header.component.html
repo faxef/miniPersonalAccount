@@ -1,20 +1,20 @@
 <!-- Header navigation -->
 <nav class="navbar navbar-expand-lg navbar-info bg-info">
   <div class="container">
-    <a class="navbar-brand">Front-end Developer - SOFT ARTEL</a>
+    <a class="navbar-brand" href="/">Front-end Developer - SOFT ARTEL</a>
     <button (click)="toggleNav()" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{'show': navToggle}">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/profile" routerLinkActive="active">Профиль</a>
+              <a class="nav-link" routerLink="/profile/{{userId}}" routerLinkActive="active">Профиль</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="/tickets" routerLinkActive="active">Тикеты</a>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" (click)="logout()">Выход</a>
+                <a class="nav-link" (click)="logout()">Выход</a>
             </li>
           </ul>
     </div>

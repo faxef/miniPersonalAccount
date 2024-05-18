@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Ticket} from "../../../core/interfaces/ticket";
+import {TicketsService} from "../../../core/services/tickets.service";
 
 @Component({
   selector: 'app-tickets-page',
@@ -13,13 +14,14 @@ export class TicketsPageComponent {
 
   constructor(
     private ticketsService: TicketsService
-  ) { }
-
-  ngOnInit() {
-    // this.tickets$  = this.ticketsService.tickets$;
+  ) {
   }
 
-  hasTickets(tickets: Ticket[]): boolean {
+  ngOnInit() {
+    this.tickets$ = this.ticketsService.tickets$;
+  }
+
+  hasTickets(tickets: Ticket[] | null): boolean | null {
     return tickets && tickets.length > 0;
   }
 

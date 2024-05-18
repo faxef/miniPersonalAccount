@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent implements OnInit {
 
@@ -24,6 +24,7 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class LoginPageComponent implements OnInit {
     this.processing = true;
     this.authService.login(this.loginForm.value).pipe(
       tap((data) => {
+        console.log(data);
         if (data) {
           this.handleLoginSuccess();
         } else {
@@ -65,7 +67,6 @@ export class LoginPageComponent implements OnInit {
 
   private handleLoginError() {
     this.processing = false;
-    this.error = true;
+    this._snackBar.open('Проверьте логин или пароль', 'Ok').afterOpened();
   }
-
 }
