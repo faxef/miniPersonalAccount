@@ -1,0 +1,24 @@
+<form [formGroup]="ticketForm">
+
+  <div class="form-group">
+    <label for="inputTitle">Заголовок *</label>
+    <input type="text" class="form-control" id="inputTitle" placeholder="Title" formControlName="title">
+  </div>
+
+  <div class="form-group">
+    <label for="inputDescription">Описание</label>
+    <textarea type="text" class="form-control" id="inputDescription" placeholder="Description"
+              formControlName="description"></textarea>
+  </div>
+
+
+  <p class="alert alert-warning" role="alert" *ngIf="processing">
+    Подождите..
+  </p>
+
+
+  <button id="submitButton" class="btn btn-fill btn-lg text-uppercase" type="button"
+          [disabled]="!ticketForm.valid || processing"
+          (click)="onSubmit()">{{ getButtonText() }}
+  </button>
+</form>
